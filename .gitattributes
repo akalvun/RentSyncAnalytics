@@ -1,0 +1,29 @@
+# Normalise line endings: LF in the repository, native in the working copy.
+* text=auto
+
+# Source and project files
+*.cs        text diff=csharp
+*.csproj    text
+*.sln       text eol=crlf
+*.xml       text
+*.json      text
+*.md        text
+*.yml       text
+*.props     text
+*.targets   text
+
+# Windows-only scripts must keep CRLF
+*.bat       text eol=crlf
+*.cmd       text eol=crlf
+*.ps1       text eol=crlf
+
+# Binary files - never convert
+*.png       binary
+*.jpg       binary
+*.ico       binary
+*.dll       binary
+*.exe       binary
+*.pdf       binary
+*.snk       binary
+*.frx       binary
+*.duckdb    binary

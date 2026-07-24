@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui"
+          onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab id="tabRentSync" label="RentSync Data">
+        <group id="grpData" label="Data">
+          <button id="btnRefresh" label="Refresh Data" size="large"
+                  imageMso="RefreshAll"
+                  screentip="Load rent roll (cache-first)"
+                  supertip="Serves the local DuckDB cache when fresh; downloads from the API only when the cache is stale."
+                  onAction="OnRefreshClick" getEnabled="GetActionsEnabled"/>
+          <button id="btnForceRefresh" label="Force Download" size="normal"
+                  imageMso="RepeatFlag"
+                  screentip="Ignore cache and download now"
+                  onAction="OnForceRefreshClick" getEnabled="GetActionsEnabled"/>
+        </group>
+        <group id="grpAnalytics" label="Analytics">
+          <button id="btnSummary" label="Property Summary" size="large"
+                  imageMso="PivotTableInsert"
+                  screentip="Aggregate rent, area and rate per property"
+                  onAction="OnSummaryClick" getEnabled="GetActionsEnabled"/>
+          <button id="btnExpiring" label="Expiring Leases" size="large"
+                  imageMso="CalendarToolReminder"
+                  screentip="Leases expiring in the next 6 months"
+                  onAction="OnExpiringClick" getEnabled="GetActionsEnabled"/>
+        </group>
+        <group id="grpSettings" label="Setup">
+          <button id="btnSettings" label="Settings" size="normal"
+                  imageMso="PropertySheet"
+                  onAction="OnSettingsClick"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

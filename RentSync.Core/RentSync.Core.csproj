@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Multi-target: net10.0 for tests/tooling, net48 for the VSTO host.
+         This is the standard pattern for sharing a modern core with a
+         legacy Office add-in. -->
+    <TargetFrameworks>net10.0;net48</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+
+    <PackageId>RentSync.Core</PackageId>
+    <Version>2.1.0</Version>
+    <Authors>Ahmed K.</Authors>
+    <Description>Excel-independent core services for the RentSync Analytics portfolio demo: REST client, DuckDB cache, analytics, telemetry. Independent portfolio project, unaffiliated with any commercial product.</Description>
+    <RepositoryUrl>https://github.com/akalvun</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DuckDB.NET.Data.Full" Version="1.1.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+    <PackageReference Include="Serilog" Version="4.0.2" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+    <PackageReference Include="Serilog.Formatting.Compact" Version="3.0.0" />
+  </ItemGroup>
+
+  <!-- net48 target: polyfills for modern C#/BCL features -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <!-- .NET Framework does not reference System.Net.Http by default in
+         SDK-style projects; the framework assembly must be added explicitly.
+         Deliberately the framework assembly, NOT the System.Net.Http NuGet
+         package - mixing the two causes assembly binding conflicts. -->
+    <Reference Include="System.Net.Http" />
+    <PackageReference Include="PolySharp" Version="1.14.1" PrivateAssets="all" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="8.0.2" />
+    <PackageReference Include="System.Threading.Channels" Version="8.0.0" />
+    <PackageReference Include="System.Net.Http.Json" Version="8.0.1" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>
