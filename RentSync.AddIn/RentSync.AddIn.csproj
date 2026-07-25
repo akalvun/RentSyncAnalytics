@@ -214,9 +214,11 @@
   -->
   <ItemGroup>
     <Compile Include="ExcelActions.cs" />
+    <Compile Include="ExcelWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UserSettings.cs" />
     <Compile Include="VbaBridge.cs" />
     <Compile Include="WindowsCredentialTokenProvider.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

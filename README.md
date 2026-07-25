@@ -57,8 +57,17 @@ so it is covered by unit tests and runs without Excel.
 
 ![Settings dialog](docs/images/04-settings.png)
 
-The API token is stored in the **Windows Credential Manager** rather than in a
-configuration file or the registry, and is never written to the workbook.
+Settings are split by where they belong: the API token goes to the **Windows
+Credential Manager**, and everything else to a small XML file under
+`%LocalAppData%\RentSync`. Nothing sensitive is written to the settings file or
+to the workbook. **Test connection** exercises the real data path — the same
+service the ribbon calls — so a green result means the feature works, not merely
+that a socket opened.
+
+The layout is built with `TableLayoutPanel` and carries no absolute coordinates.
+An add-in cannot change the DPI awareness of its host, so the dialog has to
+survive whatever Excel was started with; hard-coded positions are what make
+add-in dialogs clip their own buttons at 150% scaling.
 
 > All figures shown are generated demo data.
 

@@ -35,27 +35,27 @@ namespace RentSync.AddIn
             UiContext = SynchronizationContext.Current
                         ?? new WindowsFormsSynchronizationContext();
 
-            var appData = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                "RentSync");
+            var settings = UserSettings.Load();
 
             var collection = new ServiceCollection();
-            collection.AddRentSyncLogging(Path.Combine(appData, "logs"));
+            collection.AddRentSyncLogging(AppPaths.LogDirectory);
 
-            // Point Core at the bundled sample JSON (demo mode). VSTO shadow-copies
-            // the add-in into an assembly cache, so Assembly.Location points at that
-            // cache - not where our Data folder is. CodeBase preserves the original
-            // deployment location; strip the file:// URI prefix to get a real path.
             var codeBase = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
             var uri = new Uri(codeBase);
             var addinDir = Path.GetDirectoryName(uri.LocalPath);
             var samplePath = Path.Combine(addinDir, "Data", "rentroll.sample.json");
 
-            collection.AddRentSyncCore(configureApi: api =>
-            {
-                api.UseLocalSample = true;
-                api.LocalSamplePath = samplePath;
-            });
+            collection.AddRentSyncCore(
+                configureApi: api =>
+                {
+                    api.UseLocalSample = settings.UseDemoData;
+                    api.LocalSamplePath = samplePath;
+                    api.BaseUrl = settings.ApiBaseUrl;
+                },
+               configureCache: cacheOptions =>
+               {
+                   cacheOptions.Freshness = TimeSpan.FromMinutes(settings.CacheFreshnessMinutes);
+               });
 
             // Swap the anonymous token provider for the Windows Credential
             // Manager implementation (job requirement: auth & security).

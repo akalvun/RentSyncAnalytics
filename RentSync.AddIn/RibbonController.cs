@@ -131,11 +131,11 @@ namespace RentSync.AddIn
             });
 
         public void OnSettingsClick(Office.IRibbonControl control)
-        {
-            Get<ITelemetryService>().TrackEvent("Ribbon.SettingsOpened");
-            using (var form = new SettingsForm())
-                form.ShowDialog();
-        }
+            {
+                Get<ITelemetryService>().TrackEvent("Ribbon.SettingsOpened");
+                using (var form = new SettingsForm(ThisAddIn.Services))
+                form.ShowDialog(ExcelWindow.Owner());
+            }
 
         // ---------------- shared plumbing ----------------
 
