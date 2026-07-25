@@ -25,6 +25,45 @@ to tell — after the fact — what the add-in actually did on a user's machine.
 
 ---
 
+## Screenshots
+
+### Ribbon
+
+![RentSync Data ribbon tab](docs/images/01-ribbon.png)
+
+The add-in registers its own **RentSync Data** tab, organised into four groups:
+branding, data retrieval, analytics and setup. A group-level logo is the deepest
+level of custom branding VSTO allows — Office does not expose tab-level icons to
+COM add-ins.
+
+### Rent Roll
+
+![Rent Roll worksheet](docs/images/02-rentroll.png)
+
+**Refresh Data** writes the current rent roll to a dedicated worksheet: 42 lease
+records across 10 European cities, covering both office and retail units. Rows are
+served from a local DuckDB cache when available; **Force Download** bypasses the
+cache and re-fetches from the API.
+
+### Property Summary
+
+![Property Summary worksheet](docs/images/03-property-summary.png)
+
+Aggregates the rent roll by property — unit count, total monthly rent, total area
+and average rent per square metre. The aggregation itself lives in `RentSync.Core`,
+so it is covered by unit tests and runs without Excel.
+
+### Settings
+
+![Settings dialog](docs/images/04-settings.png)
+
+The API token is stored in the **Windows Credential Manager** rather than in a
+configuration file or the registry, and is never written to the workbook.
+
+> All figures shown are generated demo data.
+
+---
+
 ## Architecture: a modern core inside a legacy host
 
 VSTO add-ins load **in-process with Excel**, and Microsoft has stated that the VSTO
