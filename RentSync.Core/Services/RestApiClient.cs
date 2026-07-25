@@ -1,3 +1,4 @@
+using System.IO;                     // File; implicit usings omit this on net48 targets
 using System.Net;
 using System.Net.Http;               // implicit usings omit this on net48 targets
 using System.Net.Http.Headers;
@@ -59,7 +60,21 @@ public sealed class RestApiClient : IRestApiClient
         using var op = _telemetry.StartOperation("Api.FetchRentRoll");
         try
         {
-            var records = await SendWithRetryAsync(op, cancellationToken).ConfigureAwait(false);
+            IReadOnlyList<RentRollRecord> records;
+
+            if (_options.UseLocalSample)
+            {
+                // Demo mode: read the bundled JSON. Still an async, cancellable,
+                // telemetry-wrapped operation so the call path matches the real one.
+                records = await LoadLocalSampleAsync(cancellationToken).ConfigureAwait(false);
+                op.SetProperty("source", "local-sample");
+            }
+            else
+            {
+                records = await SendWithRetryAsync(op, cancellationToken).ConfigureAwait(false);
+                op.SetProperty("source", "api");
+            }
+
             op.SetProperty("recordCount", records.Count);
             op.Succeed();
             return records;
@@ -71,6 +86,32 @@ public sealed class RestApiClient : IRestApiClient
             throw;
         }
     }
+
+    private async Task<IReadOnlyList<RentRollRecord>> LoadLocalSampleAsync(CancellationToken ct)
+    {
+        var path = _options.LocalSamplePath;
+        if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
+            throw new FileNotFoundException(
+                "Demo sample data not found. Expected at: " + path);
+
+#if NETFRAMEWORK
+        var json = File.ReadAllText(path);
+#else
+        var json = await File.ReadAllTextAsync(path, ct).ConfigureAwait(false);
+#endif
+        var records = JsonSerializer.Deserialize<List<RentRollRecord>>(json, RentRollJsonOptions)
+            ?? throw new InvalidOperationException("Sample data could not be parsed.");
+
+        // Simulate a little network latency so the async UI story is visible in the demo.
+        await Task.Delay(150, ct).ConfigureAwait(false);
+        return records;
+    }
+
+    private static readonly JsonSerializerOptions RentRollJsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true,
+        Converters = { new DateOnlyJsonConverter() }
+    };
 
     private async Task<IReadOnlyList<RentRollRecord>> SendWithRetryAsync(
         IOperationScope op, CancellationToken ct)
@@ -123,7 +164,7 @@ public sealed class RestApiClient : IRestApiClient
                 response.EnsureSuccessStatusCode();
 
                 var records = await response.Content
-                    .ReadFromJsonAsync<List<RentRollRecord>>(cancellationToken: ct)
+                    .ReadFromJsonAsync<List<RentRollRecord>>(RentRollJsonOptions, ct)
                     .ConfigureAwait(false)
                     ?? throw new InvalidOperationException("Rent roll payload was empty.");
 

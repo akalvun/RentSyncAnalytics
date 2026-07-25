@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentSync.Core", "RentSync.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentSync.Tests", "RentSync.Tests\RentSync.Tests.csproj", "{A1000000-0000-0000-0000-000000000002}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentSync.AddIn", "RentSync.AddIn\RentSync.AddIn.csproj", "{7E651389-E5B4-4BE0-A880-B379B4E0CF1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,5 +22,15 @@ Global
 		{A1000000-0000-0000-0000-000000000002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1000000-0000-0000-0000-000000000002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1000000-0000-0000-0000-000000000002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E651389-E5B4-4BE0-A880-B379B4E0CF1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E651389-E5B4-4BE0-A880-B379B4E0CF1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E651389-E5B4-4BE0-A880-B379B4E0CF1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E651389-E5B4-4BE0-A880-B379B4E0CF1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0EF9F0B-6DEB-40F5-B469-BA49DED8C31D}
 	EndGlobalSection
 EndGlobal

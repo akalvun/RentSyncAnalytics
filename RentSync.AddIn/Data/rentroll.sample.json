@@ -1,0 +1,422 @@
+[
+  {
+    "propertyId": "BER-01",
+    "propertyName": "Alexanderplatz Tower",
+    "unitId": "O01",
+    "tenantName": "Blackwell Capital",
+    "monthlyRent": 3097.98,
+    "areaSqm": 138.3,
+    "leaseStart": "2022-12-01",
+    "leaseEnd": "2025-12-28"
+  },
+  {
+    "propertyId": "BER-01",
+    "propertyName": "Alexanderplatz Tower",
+    "unitId": "O02",
+    "tenantName": "Nordic Legal Partners",
+    "monthlyRent": 19816.77,
+    "areaSqm": 614.0,
+    "leaseStart": "2024-01-01",
+    "leaseEnd": "2027-01-28"
+  },
+  {
+    "propertyId": "BER-01",
+    "propertyName": "Alexanderplatz Tower",
+    "unitId": "O03",
+    "tenantName": "Brandt Logistics HQ",
+    "monthlyRent": 4092.53,
+    "areaSqm": 188.4,
+    "leaseStart": "2021-09-01",
+    "leaseEnd": "2026-09-28"
+  },
+  {
+    "propertyId": "BER-02",
+    "propertyName": "Kreuzberg Retail Park",
+    "unitId": "R01",
+    "tenantName": "Der Buchladen",
+    "monthlyRent": 5923.48,
+    "areaSqm": 134.9,
+    "leaseStart": "2021-03-01",
+    "leaseEnd": "2028-03-28"
+  },
+  {
+    "propertyId": "BER-02",
+    "propertyName": "Kreuzberg Retail Park",
+    "unitId": "R02",
+    "tenantName": "Der Buchladen",
+    "monthlyRent": 5657.18,
+    "areaSqm": 175.7,
+    "leaseStart": "2023-02-01",
+    "leaseEnd": "2026-02-28"
+  },
+  {
+    "propertyId": "BER-02",
+    "propertyName": "Kreuzberg Retail Park",
+    "unitId": "R03",
+    "tenantName": "Otto's Bookstore",
+    "monthlyRent": 7131.41,
+    "areaSqm": 189.2,
+    "leaseStart": "2023-01-01",
+    "leaseEnd": "2030-01-28"
+  },
+  {
+    "propertyId": "BER-02",
+    "propertyName": "Kreuzberg Retail Park",
+    "unitId": "R04",
+    "tenantName": "Verde Organic Market",
+    "monthlyRent": 13150.62,
+    "areaSqm": 242.3,
+    "leaseStart": "2021-09-01",
+    "leaseEnd": "2026-09-28"
+  },
+  {
+    "propertyId": "BER-02",
+    "propertyName": "Kreuzberg Retail Park",
+    "unitId": "R05",
+    "tenantName": "Green Pharmacy",
+    "monthlyRent": 15287.41,
+    "areaSqm": 342.0,
+    "leaseStart": "2023-10-01",
+    "leaseEnd": "2028-10-28"
+  },
+  {
+    "propertyId": "BER-02",
+    "propertyName": "Kreuzberg Retail Park",
+    "unitId": "R06",
+    "tenantName": "Cafe Rousseau",
+    "monthlyRent": 8759.48,
+    "areaSqm": 299.6,
+    "leaseStart": "2023-02-01",
+    "leaseEnd": "2028-02-28"
+  },
+  {
+    "propertyId": "MUC-01",
+    "propertyName": "Maximilianstrasse Gallery",
+    "unitId": "R01",
+    "tenantName": "Green Pharmacy",
+    "monthlyRent": 7613.8,
+    "areaSqm": 189.2,
+    "leaseStart": "2023-03-01",
+    "leaseEnd": "2028-03-28"
+  },
+  {
+    "propertyId": "MUC-01",
+    "propertyName": "Maximilianstrasse Gallery",
+    "unitId": "R02",
+    "tenantName": "Milano Fashion",
+    "monthlyRent": 8333.93,
+    "areaSqm": 180.8,
+    "leaseStart": "2021-10-01",
+    "leaseEnd": "2026-10-28"
+  },
+  {
+    "propertyId": "MUC-01",
+    "propertyName": "Maximilianstrasse Gallery",
+    "unitId": "R03",
+    "tenantName": "Luxe Jewellers",
+    "monthlyRent": 8361.75,
+    "areaSqm": 241.6,
+    "leaseStart": "2024-05-01",
+    "leaseEnd": "2034-05-28"
+  },
+  {
+    "propertyId": "MUC-02",
+    "propertyName": "Schwabing Business Center",
+    "unitId": "O01",
+    "tenantName": "Steinmetz Architects",
+    "monthlyRent": 19514.79,
+    "areaSqm": 619.8,
+    "leaseStart": "2021-04-01",
+    "leaseEnd": "2024-04-28"
+  },
+  {
+    "propertyId": "MUC-02",
+    "propertyName": "Schwabing Business Center",
+    "unitId": "O02",
+    "tenantName": "Nordic Legal Partners",
+    "monthlyRent": 17281.07,
+    "areaSqm": 707.7,
+    "leaseStart": "2022-10-01",
+    "leaseEnd": "2027-10-28"
+  },
+  {
+    "propertyId": "MUC-02",
+    "propertyName": "Schwabing Business Center",
+    "unitId": "O03",
+    "tenantName": "Photon Labs",
+    "monthlyRent": 7151.82,
+    "areaSqm": 275.2,
+    "leaseStart": "2024-03-01",
+    "leaseEnd": "2029-03-28"
+  },
+  {
+    "propertyId": "MUC-02",
+    "propertyName": "Schwabing Business Center",
+    "unitId": "O04",
+    "tenantName": "Lindqvist & Co",
+    "monthlyRent": 6639.21,
+    "areaSqm": 221.9,
+    "leaseStart": "2023-12-01",
+    "leaseEnd": "2033-12-28"
+  },
+  {
+    "propertyId": "FRA-01",
+    "propertyName": "Bankenviertel Plaza",
+    "unitId": "O01",
+    "tenantName": "Blackwell Capital",
+    "monthlyRent": 18912.32,
+    "areaSqm": 775.4,
+    "leaseStart": "2022-09-01",
+    "leaseEnd": "2029-09-28"
+  },
+  {
+    "propertyId": "FRA-01",
+    "propertyName": "Bankenviertel Plaza",
+    "unitId": "O02",
+    "tenantName": "Nordic Legal Partners",
+    "monthlyRent": 3495.72,
+    "areaSqm": 186.4,
+    "leaseStart": "2022-11-01",
+    "leaseEnd": "2027-11-28"
+  },
+  {
+    "propertyId": "FRA-01",
+    "propertyName": "Bankenviertel Plaza",
+    "unitId": "O03",
+    "tenantName": "Nordic Legal Partners",
+    "monthlyRent": 17283.63,
+    "areaSqm": 698.2,
+    "leaseStart": "2024-07-01",
+    "leaseEnd": "2034-07-28"
+  },
+  {
+    "propertyId": "FRA-01",
+    "propertyName": "Bankenviertel Plaza",
+    "unitId": "O04",
+    "tenantName": "Lindqvist & Co",
+    "monthlyRent": 22421.85,
+    "areaSqm": 847.2,
+    "leaseStart": "2021-11-01",
+    "leaseEnd": "2024-11-28"
+  },
+  {
+    "propertyId": "FRA-01",
+    "propertyName": "Bankenviertel Plaza",
+    "unitId": "O05",
+    "tenantName": "Helvetia Insurance",
+    "monthlyRent": 16422.93,
+    "areaSqm": 617.6,
+    "leaseStart": "2023-02-01",
+    "leaseEnd": "2028-02-28"
+  },
+  {
+    "propertyId": "FRA-01",
+    "propertyName": "Bankenviertel Plaza",
+    "unitId": "O06",
+    "tenantName": "Ferber Asset Management",
+    "monthlyRent": 11048.54,
+    "areaSqm": 437.4,
+    "leaseStart": "2023-09-01",
+    "leaseEnd": "2028-09-28"
+  },
+  {
+    "propertyId": "HAM-01",
+    "propertyName": "HafenCity Offices",
+    "unitId": "O01",
+    "tenantName": "Photon Labs",
+    "monthlyRent": 17206.6,
+    "areaSqm": 755.5,
+    "leaseStart": "2022-03-01",
+    "leaseEnd": "2027-03-28"
+  },
+  {
+    "propertyId": "HAM-01",
+    "propertyName": "HafenCity Offices",
+    "unitId": "O02",
+    "tenantName": "Steinmetz Architects",
+    "monthlyRent": 18017.9,
+    "areaSqm": 676.6,
+    "leaseStart": "2021-10-01",
+    "leaseEnd": "2026-10-28"
+  },
+  {
+    "propertyId": "HAM-01",
+    "propertyName": "HafenCity Offices",
+    "unitId": "O03",
+    "tenantName": "Draeger Analytics",
+    "monthlyRent": 9433.84,
+    "areaSqm": 476.7,
+    "leaseStart": "2023-04-01",
+    "leaseEnd": "2026-04-28"
+  },
+  {
+    "propertyId": "HAM-02",
+    "propertyName": "Moenckeberg Retail",
+    "unitId": "R01",
+    "tenantName": "Boutique Amelie",
+    "monthlyRent": 19204.0,
+    "areaSqm": 358.5,
+    "leaseStart": "2024-02-01",
+    "leaseEnd": "2034-02-28"
+  },
+  {
+    "propertyId": "HAM-02",
+    "propertyName": "Moenckeberg Retail",
+    "unitId": "R02",
+    "tenantName": "Luxe Jewellers",
+    "monthlyRent": 10081.89,
+    "areaSqm": 320.4,
+    "leaseStart": "2022-05-01",
+    "leaseEnd": "2032-05-28"
+  },
+  {
+    "propertyId": "HAM-02",
+    "propertyName": "Moenckeberg Retail",
+    "unitId": "R03",
+    "tenantName": "Cafe Rousseau",
+    "monthlyRent": 14058.86,
+    "areaSqm": 356.6,
+    "leaseStart": "2022-12-01",
+    "leaseEnd": "2027-12-28"
+  },
+  {
+    "propertyId": "HAM-02",
+    "propertyName": "Moenckeberg Retail",
+    "unitId": "R04",
+    "tenantName": "Otto's Bookstore",
+    "monthlyRent": 9028.73,
+    "areaSqm": 195.7,
+    "leaseStart": "2024-09-01",
+    "leaseEnd": "2031-09-28"
+  },
+  {
+    "propertyId": "AMS-01",
+    "propertyName": "Zuidas Financial Center",
+    "unitId": "O01",
+    "tenantName": "Meridian Consulting GmbH",
+    "monthlyRent": 5726.35,
+    "areaSqm": 301.0,
+    "leaseStart": "2022-10-01",
+    "leaseEnd": "2027-10-28"
+  },
+  {
+    "propertyId": "AMS-01",
+    "propertyName": "Zuidas Financial Center",
+    "unitId": "O02",
+    "tenantName": "Meridian Consulting GmbH",
+    "monthlyRent": 3671.55,
+    "areaSqm": 125.2,
+    "leaseStart": "2022-02-01",
+    "leaseEnd": "2025-02-28"
+  },
+  {
+    "propertyId": "AMS-01",
+    "propertyName": "Zuidas Financial Center",
+    "unitId": "O03",
+    "tenantName": "Blackwell Capital",
+    "monthlyRent": 14302.45,
+    "areaSqm": 747.5,
+    "leaseStart": "2023-11-01",
+    "leaseEnd": "2030-11-28"
+  },
+  {
+    "propertyId": "VIE-01",
+    "propertyName": "Ringstrasse Retail",
+    "unitId": "R01",
+    "tenantName": "Le Petit Bistro",
+    "monthlyRent": 11564.18,
+    "areaSqm": 243.3,
+    "leaseStart": "2024-04-01",
+    "leaseEnd": "2031-04-28"
+  },
+  {
+    "propertyId": "VIE-01",
+    "propertyName": "Ringstrasse Retail",
+    "unitId": "R02",
+    "tenantName": "Boutique Amelie",
+    "monthlyRent": 11085.69,
+    "areaSqm": 334.5,
+    "leaseStart": "2024-06-01",
+    "leaseEnd": "2031-06-28"
+  },
+  {
+    "propertyId": "VIE-01",
+    "propertyName": "Ringstrasse Retail",
+    "unitId": "R03",
+    "tenantName": "Kaufhaus Sterling",
+    "monthlyRent": 10254.45,
+    "areaSqm": 199.8,
+    "leaseStart": "2021-01-01",
+    "leaseEnd": "2028-01-28"
+  },
+  {
+    "propertyId": "VIE-01",
+    "propertyName": "Ringstrasse Retail",
+    "unitId": "R04",
+    "tenantName": "Boutique Amelie",
+    "monthlyRent": 15261.88,
+    "areaSqm": 307.6,
+    "leaseStart": "2022-04-01",
+    "leaseEnd": "2027-04-28"
+  },
+  {
+    "propertyId": "PAR-01",
+    "propertyName": "La Defense Tower B",
+    "unitId": "O01",
+    "tenantName": "Kestrel Media Group",
+    "monthlyRent": 4654.03,
+    "areaSqm": 222.3,
+    "leaseStart": "2022-02-01",
+    "leaseEnd": "2029-02-28"
+  },
+  {
+    "propertyId": "PAR-01",
+    "propertyName": "La Defense Tower B",
+    "unitId": "O02",
+    "tenantName": "Nordic Legal Partners",
+    "monthlyRent": 22500.61,
+    "areaSqm": 709.9,
+    "leaseStart": "2021-11-01",
+    "leaseEnd": "2031-11-28"
+  },
+  {
+    "propertyId": "PAR-01",
+    "propertyName": "La Defense Tower B",
+    "unitId": "O03",
+    "tenantName": "Steinmetz Architects",
+    "monthlyRent": 24467.93,
+    "areaSqm": 730.3,
+    "leaseStart": "2022-03-01",
+    "leaseEnd": "2029-03-28"
+  },
+  {
+    "propertyId": "PAR-01",
+    "propertyName": "La Defense Tower B",
+    "unitId": "O04",
+    "tenantName": "Voss Engineering",
+    "monthlyRent": 10163.77,
+    "areaSqm": 474.5,
+    "leaseStart": "2021-03-01",
+    "leaseEnd": "2028-03-28"
+  },
+  {
+    "propertyId": "PAR-01",
+    "propertyName": "La Defense Tower B",
+    "unitId": "O05",
+    "tenantName": "Steinmetz Architects",
+    "monthlyRent": 2948.4,
+    "areaSqm": 121.6,
+    "leaseStart": "2024-05-01",
+    "leaseEnd": "2031-05-28"
+  },
+  {
+    "propertyId": "PAR-01",
+    "propertyName": "La Defense Tower B",
+    "unitId": "O06",
+    "tenantName": "Steinmetz Architects",
+    "monthlyRent": 18658.96,
+    "areaSqm": 628.5,
+    "leaseStart": "2024-03-01",
+    "leaseEnd": "2029-03-28"
+  }
+]

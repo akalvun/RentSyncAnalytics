@@ -1,3 +1,4 @@
+using System.Threading;              // SemaphoreSlim; implicit usings omit this on net48
 using DuckDB.NET.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -46,7 +47,34 @@ public sealed class CacheService : ICacheService
         _connection = new DuckDBConnection($"DataSource={path}");
     }
 
-    public async Task InitializeAsync(CancellationToken cancellationToken = default)
+    // Lazy, idempotent initialisation guard. The add-in kicks off
+    // InitializeAsync in the background at startup so Excel launch is not
+    // blocked, but a user can click Refresh before that finishes. Every
+    // public operation calls EnsureInitializedAsync first; the semaphore makes
+    // sure the open + CREATE TABLE runs exactly once even under concurrent calls.
+    private readonly SemaphoreSlim _initGate = new(1, 1);
+    private bool _initialized;
+
+    private async Task EnsureInitializedAsync(CancellationToken cancellationToken)
+    {
+        if (_initialized) return;
+        await _initGate.WaitAsync(cancellationToken).ConfigureAwait(false);
+        try
+        {
+            if (_initialized) return;
+            await InitializeCoreAsync(cancellationToken).ConfigureAwait(false);
+            _initialized = true;
+        }
+        finally
+        {
+            _initGate.Release();
+        }
+    }
+
+    public Task InitializeAsync(CancellationToken cancellationToken = default) =>
+        EnsureInitializedAsync(cancellationToken);
+
+    private async Task InitializeCoreAsync(CancellationToken cancellationToken)
     {
         await _connection.OpenAsync(cancellationToken).ConfigureAwait(false);
 
@@ -74,6 +102,7 @@ public sealed class CacheService : ICacheService
     public async Task StoreAsync(IReadOnlyList<RentRollRecord> records,
         CancellationToken cancellationToken = default)
     {
+        await EnsureInitializedAsync(cancellationToken).ConfigureAwait(false);
         using var op = _telemetry.StartOperation("Cache.Store",
             new Dictionary<string, object?> { ["recordCount"] = records.Count });
         try
@@ -134,6 +163,7 @@ public sealed class CacheService : ICacheService
     public async Task<IReadOnlyList<RentRollRecord>> LoadAsync(
         CancellationToken cancellationToken = default)
     {
+        await EnsureInitializedAsync(cancellationToken).ConfigureAwait(false);
         using var op = _telemetry.StartOperation("Cache.Load");
         try
         {
@@ -176,6 +206,7 @@ public sealed class CacheService : ICacheService
 
     public async Task<bool> IsFreshAsync(CancellationToken cancellationToken = default)
     {
+        await EnsureInitializedAsync(cancellationToken).ConfigureAwait(false);
         using var cmd = _connection.CreateCommand();
         cmd.CommandText = "SELECT value FROM cache_meta WHERE key = 'snapshot_utc';";
         var value = await cmd.ExecuteScalarAsync(cancellationToken).ConfigureAwait(false);

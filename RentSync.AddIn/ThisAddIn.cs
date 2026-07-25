@@ -41,7 +41,21 @@ namespace RentSync.AddIn
 
             var collection = new ServiceCollection();
             collection.AddRentSyncLogging(Path.Combine(appData, "logs"));
-            collection.AddRentSyncCore();
+
+            // Point Core at the bundled sample JSON (demo mode). VSTO shadow-copies
+            // the add-in into an assembly cache, so Assembly.Location points at that
+            // cache - not where our Data folder is. CodeBase preserves the original
+            // deployment location; strip the file:// URI prefix to get a real path.
+            var codeBase = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+            var uri = new Uri(codeBase);
+            var addinDir = Path.GetDirectoryName(uri.LocalPath);
+            var samplePath = Path.Combine(addinDir, "Data", "rentroll.sample.json");
+
+            collection.AddRentSyncCore(configureApi: api =>
+            {
+                api.UseLocalSample = true;
+                api.LocalSamplePath = samplePath;
+            });
 
             // Swap the anonymous token provider for the Windows Credential
             // Manager implementation (job requirement: auth & security).
@@ -66,19 +80,26 @@ namespace RentSync.AddIn
 
         private void ThisAddIn_Shutdown(object sender, EventArgs e)
         {
+            var provider = _services;
+            _services = null;
+            if (provider == null) return;
+
             try
             {
-                var telemetry = _services?.GetService<ITelemetryService>();
-                telemetry?.TrackEvent("AddIn.Shutdown");
-                // Bounded flush: never hang Excel's exit.
-                telemetry?.FlushAsync(new CancellationTokenSource(
-                    TimeSpan.FromSeconds(2)).Token).GetAwaiter().GetResult();
+                (provider.GetService<ITelemetryService>())?.TrackEvent("AddIn.Shutdown");
             }
-            catch { /* shutdown must be silent */ }
-            finally
+            catch { /* ignore */ }
+
+            // Dispose off the UI thread and DO NOT block on it. Blocking here
+            // (.Wait / .GetResult) would deadlock: the async disposal of the
+            // telemetry service tries to resume on the UI SynchronizationContext
+            // captured at startup, but that thread is stuck waiting on us.
+            // Excel's exit must never wait for telemetry to flush.
+            System.Threading.Tasks.Task.Run(async () =>
             {
-                _services?.Dispose();
-            }
+                try { await provider.DisposeAsync().ConfigureAwait(false); }
+                catch { /* shutdown must be silent */ }
+            });
         }
 
         /// <summary>Expose the VBA interop bridge: in VBA use
@@ -89,7 +110,16 @@ namespace RentSync.AddIn
             return _vbaBridge;
         }
 
+        protected override Microsoft.Office.Core.IRibbonExtensibility
+            CreateRibbonExtensibilityObject()
+        {
+            return new RibbonController();
+        }
+
         #region VSTO generated code
+        // The generated ThisAddIn.Designer.cs calls this.InternalStartup() from
+        // FinishInitialization(), but does NOT define it - this template expects
+        // the method to live here. Wire the Startup/Shutdown events.
         private void InternalStartup()
         {
             this.Startup += new EventHandler(ThisAddIn_Startup);

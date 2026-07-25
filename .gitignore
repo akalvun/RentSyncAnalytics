@@ -6,3 +6,13 @@ obj/
 *.jsonl
 *.clef
 TestResults/
+# VSTO signing key
+*.pfx
+
+# Old-style NuGet packages folder
+packages/
+
+# VSTO publish output
+*.vsto
+*.manifest
+_addin_source/

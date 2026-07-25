@@ -22,6 +22,16 @@ public sealed class ApiOptions
     public TimeSpan RetryBaseDelay { get; set; } = TimeSpan.FromMilliseconds(400);
 
     public TimeSpan RequestTimeout { get; set; } = TimeSpan.FromSeconds(30);
+
+    /// <summary>
+    /// Demo mode: serve rent roll from a bundled local JSON file instead of the
+    /// network. The real product would always call the API; this keeps the
+    /// portfolio demo self-contained and offline-capable.
+    /// </summary>
+    public bool UseLocalSample { get; set; }
+
+    /// <summary>Path to the bundled sample JSON when UseLocalSample is true.</summary>
+    public string LocalSamplePath { get; set; } = "";
 }
 
 public sealed class CacheOptions
